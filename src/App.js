@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Filesview from './components/Filesview/Filesview';
+import Header from './components/Header/Header';
+import Sidebar from './components/Sidebar/Sidebar';
+import SideIcons from './components/SideIcons/SideIcons';
 
 function App() {
+  const [user, setUser] = useState({
+    displayName: "Sheikh Yeamin",
+    email: "yeaminsheikh7@gmail.com",
+    emailVerified: true,
+    phoneNumber: null,
+    photoURL: "https://pbs.twimg.com/profile_images/1517185752895229954/YbFoWUJU_400x400.jpg"
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+       <Header userPhoto={user.photoURL} />
+       <div className="app__main">
+        <Sidebar />
+        <Filesview />
+        <SideIcons />
+       </div>
     </div>
   );
 }
